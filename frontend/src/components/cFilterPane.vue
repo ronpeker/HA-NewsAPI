@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="updateFilters">
+  <form @submit.prevent="updateFilters" class="row justify-content-center">
     <div class="input-group input-group-sm">
       <span class="input-group-text">Keyword:</span>
       <input
@@ -19,13 +19,20 @@
           'btn-warning':
             category == chosenCategory && category != filtersStore.category,
         }"
-        @click.prevent="chosenCategory = category"
+        @click.prevent="
+          chosenCategory =
+            !chosenCategory || (category != chosenCategory && category != filtersStore.category)
+              ? category
+              : ''
+        "
       >
         {{ category }}
       </button>
     </div>
     <div class="row justify-content-center">
-        <button type="submit" class="btn btn-primary col-auto">Apply Filters</button>
+      <button type="submit" class="btn btn-primary col-auto">
+        Apply Filters
+      </button>
     </div>
   </form>
 </template>
@@ -61,9 +68,14 @@ export default {
     updateFilters() {
       this.filtersStore.setKeyword(this.keyword);
       this.filtersStore.setCategory(this.chosenCategory);
+      this.$emit("updatedFilters");
     },
   },
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.input-group {
+  width: auto;
+}
+</style>
