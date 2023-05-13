@@ -22,7 +22,7 @@
       </button>
     </div>
     <div class="row justify-content-center text-center">
-      <h3>{{ article.title }}</h3>
+      <h2>{{ article.title }}</h2>
     </div>
     <div class="row justify-content-end mb-1">
       <small class="col-auto publish-info"
@@ -31,10 +31,10 @@
       >
     </div>
     <div class="row justify-content-center mb-3">
-      <img :src="article.urlToImage" alt="article image" class="col-8" />
+      <img v-if="article.urlToImage" :src="article.urlToImage" alt="article image" class="col-8" />
     </div>
     <div class="row justify-content-center text-center">
-      <p class="description">{{ article.description }}</p>
+      <h5 class="description">{{ article.description }}</h5>
     </div>
     <div class="row">
       <p class="content">{{ article.content }}</p>
@@ -67,15 +67,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss" scoped>
-.publish-info {
-  font-size: 0.75em;
-}
-.description {
-  font-size: 1em;
-}
-.content {
-  font-size: 0.6em;
-}
-</style>

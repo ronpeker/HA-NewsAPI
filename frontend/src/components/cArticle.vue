@@ -59,12 +59,6 @@ export default {
 .img-thumbnail {
   background-color: #ddd;
 }
-.publish-date {
-  font-size: 0.5em;
-}
-.description {
-  font-size: 0.75em;
-}
 .card-title:hover {
   cursor: pointer;
   text-decoration: underline;
