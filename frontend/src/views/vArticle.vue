@@ -31,11 +31,7 @@
       >
     </div>
     <div class="row justify-content-center mb-3">
-      <img
-          :src="article.urlToImage"
-          alt="article image"
-          class="col-8"
-        />
+      <img :src="article.urlToImage" alt="article image" class="col-8" />
     </div>
     <div class="row justify-content-center text-center">
       <p class="description">{{ article.description }}</p>
@@ -66,7 +62,7 @@ export default {
     goBack() {
       this.newsStore.setActiveArticle({});
       this.$router.push("/");
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior: "smooth" });
     },
   },
 };

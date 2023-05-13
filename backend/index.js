@@ -11,6 +11,9 @@ const NEWS_API_KEY = process.env.NEWS_API_KEY;
 
 app.get("/api/news", (req, res) => {
   base_url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${NEWS_API_KEY}`;
+  if (req.query.page) {
+    base_url += `&page=${req.query.page}`;
+  }
   if (req.query.keyword) {
     base_url += `&q=${req.query.keyword}`;
   }
@@ -32,8 +35,5 @@ app.get("/api/news", (req, res) => {
 });
 
 app.use(express.static(path.join(__dirname, "public")));
-// app.get('/', (req, res) => {
-//     res.sendFile(path.join(__dirname, 'public', 'index.html'));
-// });
 
 app.listen(process.env.PORT || 3000);

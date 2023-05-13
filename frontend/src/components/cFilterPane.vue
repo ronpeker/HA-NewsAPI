@@ -14,16 +14,15 @@
         v-for="category in categories"
         class="m-1 btn btn-sm col-auto"
         v-bind:class="{
-          'btn-success': category == filtersStore.category,
+          'btn-success':
+            category == filtersStore.category && category == chosenCategory,
           'btn-outline-secondary': category != chosenCategory,
           'btn-warning':
             category == chosenCategory && category != filtersStore.category,
         }"
         @click.prevent="
           chosenCategory =
-            !chosenCategory || (category != chosenCategory && category != filtersStore.category)
-              ? category
-              : ''
+            (!chosenCategory || category != chosenCategory) ? category : ''
         "
       >
         {{ category }}

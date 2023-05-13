@@ -9,14 +9,14 @@
           <h5 class="card-title" @click="openArticle">{{ article.title }}</h5>
           <p class="card-text description">
             {{
-              article.description.length > 80
+              article.description?.length > 80
                 ? article.description.slice(0, 80) + "..."
                 : article.description
             }}
           </p>
         </div>
       </div>
-      <div class="col-4">
+      <div class="col-4 align-self-center pe-1">
         <img
           :src="article.urlToImage ? article.urlToImage : stockphoto"
           alt="article image"
@@ -53,6 +53,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.card {
+  background-color: #eee;
+}
+.img-thumbnail {
+  background-color: #ddd;
+}
 .publish-date {
   font-size: 0.5em;
 }
